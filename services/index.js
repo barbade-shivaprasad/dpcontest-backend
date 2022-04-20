@@ -5,6 +5,7 @@ const ipModel = require('../models/ipModel')
 const mailer = require('../mailer/index')
 class user{
     static temp = (req,res)=>{
+        console.log(req.headers['x-real-ip'])
         res.send("WORKING !!")
     }
     static sendMail=async(request,response)=>{
