@@ -15,7 +15,7 @@ dotenv.config()
 const app = express()
 app.use(urlencoded())
 app.use(express.json())
-app.use(cors({ origin: '*', credentials: true }));
+app.use(cors({ origin: 'https://dp.turntbloke.tech', credentials: true }));
 app.use(routes)
 
 mongoose.connect(process.env.url,(err,res)=>{
@@ -35,7 +35,7 @@ const server = http.createServer(app);
 
 const io = new Server(server,{
     cors:{
-      origin:'*'
+      origin:'https://dp.turntbloke.tech'
     }
   });
 
