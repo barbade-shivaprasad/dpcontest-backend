@@ -146,14 +146,14 @@ class user{
     }
     static like = async(req,res)=>{
         try {
-        
+            
             let temp = {}
-            temp['ip'] = req.ip;
+            temp['ip'] = req.headers['x-real-ip'];
             temp['id'] = req.body.id;
             let data = new ipModel(temp);
             
 
-            let result = await ipModel.exists({ip:req.ip})
+            let result = await ipModel.exists({ip:req.headers['x-real-ip']})
             if(result != null)
             throw new Error("Already liked a post")
             else{
@@ -170,7 +170,8 @@ class user{
 
     static likedId = async(req,res)=>{
         try {
-            let result = await ipModel.findOne({ip:req.ip})
+            
+            let result = await ipModel.findOne({ip:req.headers['x-real-ip']})
             res.send(result)
         } catch (err) {
             res.status(202).send(err.message);
@@ -179,8 +180,8 @@ class user{
 
     static unlike = async(req,res)=>{
         try{
-            console.log(req.body.id)
-            await ipModel.findOneAndRemove({ip:req.ip})
+            
+            await ipModel.findOneAndRemove({ip:req.headers['x-real-ip']})
             await userModel.updateOne({id:req.body.id},{$inc:{likes:-1}})
             res.send("success")
         }
