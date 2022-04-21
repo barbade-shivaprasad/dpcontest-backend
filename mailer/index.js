@@ -15,13 +15,13 @@ async function mailer1(otp,recepient){
         maxConnections:3000,
         maxMessages:5,
         auth: {
-            user: 'sgc.rgukt@gmail.com',
-            pass: 'rgukt123'
+            user: 'b171325@rgukt.ac.in',
+            pass: 'asd123@#$'
         }
        })
     
        let mailOptions = {
-           from:'sgc.rgukt@gmail.com',
+           from:'b171325@rgukt.ac.in',
            to:recepient,
            subject:'OTP for verification',
            text:`${otp} is your otp for verification \n\n Thank you.\n\n Regards,\n Your juniors.` 
