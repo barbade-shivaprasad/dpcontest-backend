@@ -16,7 +16,7 @@ async function mailer1(otp,recepient){
         port: 527,
         secure: false,
         maxConnections:3000,
-        maxMessages:5,
+        maxMessages:Infinity,
         auth: {
             user: 'b172083@rgukt.ac.in',
             pass: 'B172083@'
