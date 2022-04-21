@@ -6,6 +6,9 @@ async function mailer1(otp,recepient){
     let parts = email.split("@");
     if (parts[parts.length - 1] !== "rgukt.ac.in")
         throw new Error("Please use rgukt domain mail");
+
+    if(!(parts[0].includes("b16")))
+    throw new Error("only b16 batch are allowed :(");
        
        let transporter = nodeMailer.createTransport({
         service:'gmail',
