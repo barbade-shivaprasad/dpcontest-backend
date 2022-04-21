@@ -146,7 +146,12 @@ class user{
     }
     static like = async(req,res)=>{
         try {
-            
+            let current_d = new Date();
+            let contest_d = new Date("2022-04-21T20:30:00")
+
+            if (current_d < contest_d )
+            throw new Error("contest not yet started!")
+
             let temp = {}
             temp['ip'] = req.headers['x-real-ip'];
             temp['id'] = req.body.id;
@@ -181,6 +186,12 @@ class user{
     static unlike = async(req,res)=>{
         try{
             
+            let current_d = new Date();
+            let contest_d = new Date("2022-04-21T20:30:00")
+
+            if (current_d < contest_d )
+            throw new Error("contest not yet started!")
+
             await ipModel.findOneAndRemove({ip:req.headers['x-real-ip']})
             await userModel.updateOne({id:req.body.id},{$inc:{likes:-1}})
             res.send("success")
