@@ -189,6 +189,7 @@ class user{
             res.status(202).send(err.message);
         }
     }
+    
 }
 
 module.exports = user;
